@@ -1,0 +1,28 @@
+name: "iOS Autotests"
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  release-ipa:
+    runs-on: [self-hosted, macOS, ARM64]
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Set up ruby
+        run: |
+          brew install ruby
+      
+      - name: Setup fastlane
+        run: |
+          gem install bundler:2.4.2
+          bundle install --jobs 4 --retry 3 
+
+      - name: Fastlane ios deploy
+        run: |
+          bundle exec fastlane ios run_tests
