@@ -13,7 +13,7 @@ final class PEProjectUITests: XCTestCase {
         continueAfterFailure = false
     }
 
-    func testExample() throws {
+    func testLogin() throws {
         let app = XCUIApplication()
         app.launch()
 
