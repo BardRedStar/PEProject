@@ -11,7 +11,7 @@ import XCTest
 final class PEProjectTests: XCTestCase {
     func testLoginValidatorSuccess() throws {
         let loginValidator = LoginValidator()
-        XCTAssertTrue(loginValidator.validate(login: "root", password: "123"))
+        XCTAssertTrue(loginValidator.validate(login: "root", password: "1234"))
     }
 
     func testLoginValidatorRandomFailure() throws {
