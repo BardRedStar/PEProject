@@ -6,27 +6,12 @@ platform :ios do
     Dotenv.load ".env.ios"
   end
 
-  desc "Build binary"
-  lane :build do
-    xcode_select ENV['FL_XCODE_PATH']
-    
-    build_ios_app(
-      include_bitcode: false
-    )
-  end
-
   desc "Runs tests"
   lane :test do
+    xcode_select ENV['FL_XCODE_PATH']
     run_tests
   end
 
-  desc "Builds app and runs tests"
-  lane :deploy do
-    build
-    test
-  end
-
   error do |lane, exception|
-    
   end
 end
